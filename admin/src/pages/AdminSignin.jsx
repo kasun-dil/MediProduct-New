@@ -22,18 +22,15 @@ const AdminSignin = () => {
         password,
       });
 
-      // Ensure user is an admin
       if (data.userType !== 'admin') {
         setMessage('Access denied: Admins only');
         setIsError(true);
         return;
       }
 
-      login(data); // Save user in context + localStorage
+      login(data);
       setMessage('Login successful!');
       setIsError(false);
-
-      // Navigate to admin dashboard (e.g., manage products)
       navigate('/admin/manageproducts');
     } catch (error) {
       setMessage(error.response?.data?.message || 'Login failed');
@@ -42,13 +39,21 @@ const AdminSignin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-green-50 px-4">
-      <div className="max-w-md w-full bg-white p-8 rounded-2xl shadow-lg">
-        <h2 className="text-3xl font-extrabold text-center text-green-700 mb-6">Admin Sign In</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-green-100 via-white to-green-50 px-6">
+      
+      {/* Floating background blobs */}
+      <div className="absolute top-10 left-10 w-72 h-72 bg-green-400 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob"></div>
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-green-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-4000"></div>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+      {/* Form Card */}
+      <div className="relative z-10 max-w-md w-full bg-white/60 backdrop-blur-xl p-8 rounded-3xl shadow-2xl">
+        <h2 className="text-4xl font-bold text-center text-green-700 mb-7 tracking-wide">
+          Admin Sign In
+        </h2>
+
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-1">
               Admin Email
             </label>
             <input
@@ -58,12 +63,12 @@ const AdminSignin = () => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="admin@example.com"
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white/80 focus:ring-2 focus:ring-green-400 focus:outline-none shadow-sm"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+            <label htmlFor="password" className="block text-sm font-semibold text-gray-700 mb-1">
               Password
             </label>
             <input
@@ -72,14 +77,14 @@ const AdminSignin = () => {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-1 w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
+              className="w-full px-4 py-3 rounded-xl border border-gray-300 bg-white/80 focus:ring-2 focus:ring-green-400 focus:outline-none shadow-sm"
             />
           </div>
 
           {message && (
             <div
-              className={`p-3 text-sm rounded-md text-center ${
-                isError ? 'bg-red-100 text-red-600' : 'bg-green-100 text-green-700'
+              className={`p-3 text-sm rounded-lg text-center font-semibold ${
+                isError ? 'bg-red-100 text-red-700' : 'bg-green-100 text-green-700'
               }`}
             >
               {message}
@@ -88,7 +93,7 @@ const AdminSignin = () => {
 
           <button
             type="submit"
-            className="w-full bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 transition"
+            className="w-full mt-4 py-3 rounded-xl bg-green-600 hover:bg-green-700 hover:scale-105 text-white font-bold transition-all duration-300 shadow-lg"
           >
             Sign In as Admin
           </button>

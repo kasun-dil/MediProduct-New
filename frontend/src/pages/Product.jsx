@@ -27,7 +27,7 @@ const Product = () => {
   if (!product) {
     return (
       <>
-        <Navbar />
+       
         <div className="text-center text-green-700 font-semibold mt-8">Loading product...</div>
       </>
     );
