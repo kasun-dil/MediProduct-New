@@ -7,12 +7,12 @@
 ## 🚀 Features
 
 - 🛒 Browse medical products
-- 🔍 Search and filter items
+- 🔍 filter items
 - 🧾 Add to cart and checkout
-- 🛡️ Secure login (Customer, Admin, Pharmacist)
+- 🛡️ Secure login (Customer, Admin)
 - 📦 Admin dashboard for product management
-- 📊 Real-time backend API with MongoDB (hosted on Railway)
-- 🌐 Responsive frontend (hosted on Netlify or Vercel)
+- 📊 Real-time backend API with MongoDB 
+- 🌐 Responsive frontend
 
 ---
 
